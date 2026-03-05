@@ -1,0 +1,493 @@
+<project_specification>
+  <project_name>AI Agent Platform</project_name>
+
+  <overview>
+    The AI Agent Platform is a comprehensive full-stack web application for managing AI agents, their configurations, and monitoring their execution. Users can create and configure AI agents with custom system prompts, model settings, and key-value configurations. The platform tracks all agent executions with detailed metrics including token usage and execution time. It includes role-based access control, API key management for programmatic access, and a modern responsive UI built with Next.js 14, PostgreSQL, Prisma ORM, and Tailwind CSS.
+  </overview>
+
+  <modernization>
+    <strategy>new_build</strategy>
+    <current_stack>
+      <languages>None</languages>
+      <frontend>None</frontend>
+      <backend>None</backend>
+      <database>None</database>
+      <styling>None</styling>
+    </current_stack>
+    <source_path>/Users/puttaiaharugunta/codebase/hachi/ai-agent-platform/rewrite-dj-app</source_path>
+    <preserve>
+      None - This is a new project build from scratch.
+    </preserve>
+  </modernization>
+
+  <technology_stack>
+    <frontend>
+      <framework>Next.js 14 with App Router</framework>
+      <styling>Tailwind CSS</styling>
+    </frontend>
+    <backend>
+      <runtime>Next.js 14 (API Routes)</runtime>
+      <database>PostgreSQL with Prisma ORM</database>
+    </backend>
+    <communication>
+      <api>RESTful API</api>
+    </communication>
+  </technology_stack>
+
+  <prerequisites>
+    <environment_setup>
+      - Node.js 18+ and npm
+      - PostgreSQL 14+ running locally
+      - Git for version control
+      - TypeScript enabled in Next.js project
+    </environment_setup>
+  </prerequisites>
+
+  <feature_count>201</feature_count>
+
+  <core_features>
+    <category name="Infrastructure" count="5">
+      <feature>Database connection established</feature>
+      <feature>Database schema applied correctly</feature>
+      <feature>Data persists across server restart</feature>
+      <feature>No mock data patterns in codebase</feature>
+      <feature>Backend API queries real database</feature>
+    </category>
+
+    <category name="Database Schema & Models" count="3">
+      <feature>User model with all fields and relations</feature>
+      <feature>Agent model with ownership and configuration support</feature>
+      <feature>AgentExecution and APIKey models with proper relationships</feature>
+    </category>
+
+    <category name="Authentication System" count="8">
+      <feature>User can register with valid email and password</feature>
+      <feature>User can login with correct credentials</feature>
+      <feature>User cannot login with invalid credentials</feature>
+      <feature>User can logout successfully</feature>
+      <feature>Registration password validation works (min 8 chars)</feature>
+      <feature>Session persists across page refresh</feature>
+      <feature>Protected routes redirect unauthenticated users to login</feature>
+      <feature>Current user info available in API</feature>
+    </category>
+
+    <category name="User Management" count="6">
+      <feature>Admin can list all users</feature>
+      <feature>Regular users cannot list other users</feature>
+      <feature>User can view their own profile</feature>
+      <feature>User can update their own profile</feature>
+      <feature>Admin can delete users</feature>
+      <feature>Regular users cannot delete users</feature>
+    </category>
+
+    <category name="Agent Management - Backend" count="10">
+      <feature>User can list their own agents</feature>
+      <feature>User can create a new agent</feature>
+      <feature>Agent name and model are required fields</feature>
+      <feature>User can edit their own agent</feature>
+      <feature>User cannot edit other users' agents</feature>
+      <feature>User can delete their own agent</feature>
+      <feature>User cannot delete other users' agents</feature>
+      <feature>Agent can be deactivated</feature>
+      <feature>Default temperature and max_tokens are set correctly</feature>
+      <feature>Agent creation updates database correctly</feature>
+    </category>
+
+    <category name="Agent Configuration" count="6">
+      <feature>User can list configurations for their agent</feature>
+      <feature>User can add configuration to their agent</feature>
+      <feature>Configurations require both key and value</feature>
+      <feature>User can edit configuration</feature>
+      <feature>User can delete configuration</feature>
+      <feature>User cannot access configurations for other users' agents</feature>
+    </category>
+
+    <category name="Agent Execution" count="10">
+      <feature>User can list all executions for their agents</feature>
+      <feature>User can list executions for a specific agent</feature>
+      <feature>User can create a new execution</feature>
+      <feature>Execution status defaults to pending</feature>
+      <feature>Execution can transition to running</feature>
+      <feature>Execution can transition to completed</feature>
+      <feature>Execution can transition to failed with error message</feature>
+      <feature>Failed executions store error details</feature>
+      <feature>User can view execution details including prompt and response</feature>
+      <feature>User can cancel pending execution</feature>
+    </category>
+
+    <category name="API Key Management" count="5">
+      <feature>User can list their API keys</feature>
+      <feature>User can generate a new API key</feature>
+      <feature>API key is hashed before storage</feature>
+      <feature>User can revoke API key</feature>
+      <feature>Revoked keys cannot be used</feature>
+    </category>
+
+    <category name="Frontend - Layout & Navigation" count="8">
+      <feature>Navigation bar displays correctly on desktop</feature>
+      <feature>Navigation bar is responsive on mobile</feature>
+      <feature>Sidebar navigation displays all links</feature>
+      <feature>Breadcrumbs show correct page hierarchy</feature>
+      <feature>Logo links to home page</feature>
+      <feature>User menu shows current user name</feature>
+      <feature>User menu has logout option</feature>
+      <feature>Logout redirects to login page</feature>
+    </category>
+
+    <category name="Frontend - Authentication Pages" count="6">
+      <feature>Login page displays email and password fields</feature>
+      <feature>Login form shows validation errors</feature>
+      <feature>Registration page displays all required fields</feature>
+      <feature>Registration form validates password length</feature>
+      <feature>Successful login redirects to dashboard</feature>
+      <feature>Failed login shows error message</feature>
+    </category>
+
+    <category name="Frontend - Dashboard" count="8">
+      <feature>Dashboard loads without errors</feature>
+      <feature>Dashboard displays agent count stat</feature>
+      <feature>Dashboard displays execution count stat</feature>
+      <feature>Dashboard displays tokens used stat</feature>
+      <feature>Dashboard displays success rate stat</feature>
+      <feature>Dashboard shows recent executions list</feature>
+      <feature>Dashboard updates when new agent is created</feature>
+      <feature>Dashboard is responsive on mobile</feature>
+    </category>
+
+    <category name="Frontend - Agent List" count="8">
+      <feature>Agent list page loads and displays agents</feature>
+      <feature>Agent list shows agent name and model</feature>
+      <feature>Agent list shows agent status indicator</feature>
+      <feature>Agent list has search functionality</feature>
+      <feature>Agent list has filter by status</feature>
+      <feature>Agent list has create new agent button</feature>
+      <feature>Empty state displays when no agents exist</feature>
+      <feature>Agent list pagination works correctly</feature>
+    </category>
+
+    <category name="Frontend - Agent Creation" count="6">
+      <feature>Create agent form displays all required fields</feature>
+      <feature>Create agent form validates required fields</feature>
+      <feature>Create agent form validates model selection</feature>
+      <feature>Successful creation redirects to agent list</feature>
+      <feature>Failed creation shows error message</feature>
+      <feature>Form resets after successful creation</feature>
+    </category>
+
+    <category name="Frontend - Agent Edit" count="6">
+      <feature>Edit form pre-fills with existing agent data</feature>
+      <feature>Edit form can update agent name</feature>
+      <feature>Edit form can update agent description</feature>
+      <feature>Edit form can update system prompt</feature>
+      <feature>Save changes redirects to agent detail</feature>
+      <feature>Cancel edit returns to agent detail</feature>
+    </category>
+
+    <category name="Frontend - Agent Detail" count="6">
+      <feature>Agent detail page shows all agent information</feature>
+      <feature>Agent detail shows configuration list</feature>
+      <feature>Agent detail shows execution history</feature>
+      <feature>Agent detail has edit button</feature>
+      <feature>Agent detail has delete button</feature>
+      <feature>Delete confirmation modal appears before deletion</feature>
+    </category>
+
+    <category name="Frontend - Agent Configuration" count="6">
+      <feature>Configuration panel displays all configs</feature>
+      <feature>Add config form validates key and value</feature>
+      <feature>Config list has delete buttons</feature>
+      <feature>Edit config form pre-fills existing values</feature>
+      <feature>Config changes save successfully</feature>
+      <feature>Config validation errors display correctly</feature>
+    </category>
+
+    <category name="Frontend - Execution List" count="8">
+      <feature>Execution list page loads and displays executions</feature>
+      <feature>Execution list shows execution status</feature>
+      <feature>Execution list shows execution date</feature>
+      <feature>Execution list has status filter</feature>
+      <feature>Execution list has agent filter</feature>
+      <feature>Execution list has search by prompt</feature>
+      <feature>Clicking execution navigates to detail page</feature>
+      <feature>Empty state displays when no executions exist</feature>
+    </category>
+
+    <category name="Frontend - Execution Detail" count="6">
+      <feature>Execution detail shows prompt</feature>
+      <feature>Execution detail shows response</feature>
+      <feature>Execution detail shows token usage</feature>
+      <feature>Execution detail shows execution time</feature>
+      <feature>Execution detail shows status badge</feature>
+      <feature>Failed executions show error message</feature>
+    </category>
+
+    <category name="Frontend - API Key Management" count="6">
+      <feature>API key list page displays all keys</feature>
+      <feature>API key list shows key name</feature>
+      <feature>API key list shows last used date</feature>
+      <feature>Create key modal generates new key</feature>
+      <feature>Generated key is displayed to user</feature>
+      <feature>Key revocation requires confirmation</feature>
+    </category>
+
+    <category name="UI Components & Polish" count="12">
+      <feature>All buttons have hover states</feature>
+      <feature>All form inputs have focus states</feature>
+      <feature>Loading spinners appear during async operations</feature>
+      <feature>Success messages display after successful actions</feature>
+      <feature>Error messages display for failed operations</feature>
+      <feature>Toast notifications are dismissible</feature>
+      <feature>Modals have backdrop blur effect</feature>
+      <feature>Data tables have row hover effect</feature>
+      <feature>Pagination controls are accessible</feature>
+      <feature>Search filters update in real-time</feature>
+      <feature>Dropdowns close when clicking outside</feature>
+      <feature>File inputs have drag and drop support</feature>
+    </category>
+
+    <category name="Error Handling" count="6">
+      <feature>404 page displays for unknown routes</feature>
+      <feature>404 page has link to home</feature>
+      <feature>500 page displays for server errors</feature>
+      <feature>Form errors display inline with fields</feature>
+      <feature>API errors display user-friendly messages</feature>
+      <feature>Network errors show retry option</feature>
+    </category>
+
+    <category name="Form Validation" count="8">
+      <feature>Email field validates email format</feature>
+      <feature>Password field shows strength indicator</feature>
+      <feature>Required field validation prevents empty submission</feature>
+      <feature>Number fields enforce min/max values</feature>
+      <feature>Date fields enforce date range</feature>
+      <feature>URL fields validate URL format</feature>
+      <feature>Duplicate key detection for configs</feature>
+      <feature>Field-level error messages are specific</feature>
+    </category>
+
+    <category name="Security & Access Control" count="8">
+      <feature>Unauthenticated users cannot access protected pages</feature>
+      <feature>Users cannot access other users' agents</feature>
+      <feature>Users cannot access other users' executions</feature>
+      <feature>Users cannot access other users' API keys</feature>
+      <feature>Admin-only pages reject regular users</feature>
+      <feature>API returns 401 for unauthenticated requests</feature>
+      <feature>API returns 403 for unauthorized requests</feature>
+      <feature>Sessions expire after timeout</feature>
+    </category>
+
+    <category name="Data Persistence" count="6">
+      <feature>Created agent persists after page refresh</feature>
+      <feature>Updated agent persists after page refresh</feature>
+      <feature>Deleted agent does not appear after refresh</feature>
+      <feature>Config changes persist across sessions</feature>
+      <feature>Execution status updates persist correctly</feature>
+      <feature>User profile changes persist correctly</feature>
+    </category>
+
+    <category name="Workflow Completeness" count="6">
+      <feature>Complete create-read-update-delete workflow for agents</feature>
+      <feature>Complete create-read-update-delete workflow for configs</feature>
+      <feature>Complete create-read-delete workflow for executions</feature>
+      <feature>Complete create-read-delete workflow for API keys</feature>
+      <feature>Complete registration-login-logout workflow</feature>
+      <feature>End-to-end agent creation and execution workflow</feature>
+    </category>
+
+    <category name="Search & Filter" count="4">
+      <feature>Agent search filters by name or description</feature>
+      <feature>Execution filter by status works correctly</feature>
+      <feature>Execution filter by agent works correctly</feature>
+      <feature>Filter combinations produce correct results</feature>
+    </category>
+
+    <category name="Responsive Design" count="8">
+      <feature>Navigation collapses to hamburger menu on mobile</feature>
+      <feature>Tables scroll horizontally on small screens</feature>
+      <feature>Forms are fully usable on mobile devices</feature>
+      <feature>Touch targets are at least 44x44 pixels</feature>
+      <feature>No horizontal scroll on mobile</feature>
+      <feature>Modals fit within mobile viewport</feature>
+      <feature>Charts/visualizations resize correctly</feature>
+      <feature>Sidebar collapses on tablet devices</feature>
+    </category>
+
+    <category name="Accessibility" count="6">
+      <feature>All images have alt text</feature>
+      <feature>Form fields have associated labels</feature>
+      <feature>Keyboard navigation works for all interactive elements</feature>
+      <feature>Focus indicators are visible</feature>
+      <feature>Color contrast meets WCAG AA standards</feature>
+      <feature>Screen reader announcements for dynamic content</feature>
+    </category>
+
+    <category name="Navigation Integrity" count="6">
+      <feature>All navigation links work correctly</feature>
+      <feature>Back button preserves form state when appropriate</feature>
+      <feature>Deep links navigate to correct pages</feature>
+      <feature>Post-login redirect works correctly</feature>
+      <feature>Logout redirects to login page</feature>
+      <feature>Breadcrumbs match current page hierarchy</feature>
+    </category>
+
+    <category name="Performance" count="4">
+      <feature>Dashboard loads within 2 seconds</feature>
+      <feature>Agent list loads within 1 second</feature>
+      <feature>Large execution lists paginate smoothly</feature>
+      <feature>No console errors on any page</feature>
+    </category>
+  </core_features>
+
+  <database_schema>
+    <schema>
+      <table name="User">
+        <column name="id" type="UUID" primary_key="true"/>
+        <column name="email" type="String" unique="true" indexed="true"/>
+        <column name="password_hash" type="String"/>
+        <column name="name" type="String"/>
+        <column name="role" type="Enum(admin, user)"/>
+        <column name="created_at" type="DateTime"/>
+        <column name="updated_at" type="DateTime"/>
+      </table>
+
+      <table name="Agent">
+        <column name="id" type="UUID" primary_key="true"/>
+        <column name="name" type="String"/>
+        <column name="description" type="Text" nullable="true"/>
+        <column name="model_type" type="Enum(gpt-4, gpt-3.5-turbo, claude-3, custom)"/>
+        <column name="system_prompt" type="Text"/>
+        <column name="temperature" type="Decimal" default="0.7"/>
+        <column name="max_tokens" type="Integer" default="2048"/>
+        <column name="is_active" type="Boolean" default="true"/>
+        <column name="user_id" type="UUID" foreign_key="User.id"/>
+        <column name="created_at" type="DateTime"/>
+        <column name="updated_at" type="DateTime"/>
+      </table>
+
+      <table name="AgentExecution">
+        <column name="id" type="UUID" primary_key="true"/>
+        <column name="agent_id" type="UUID" foreign_key="Agent.id"/>
+        <column name="prompt" type="Text"/>
+        <column name="response" type="Text"/>
+        <column name="tokens_used" type="Integer"/>
+        <column name="execution_time_ms" type="Integer"/>
+        <column name="status" type="Enum(pending, running, completed, failed)"/>
+        <column name="error_message" type="Text" nullable="true"/>
+        <column name="created_at" type="DateTime"/>
+        <column name="completed_at" type="DateTime" nullable="true"/>
+      </table>
+
+      <table name="AgentConfig">
+        <column name="id" type="UUID" primary_key="true"/>
+        <column name="agent_id" type="UUID" foreign_key="Agent.id"/>
+        <column name="key" type="String"/>
+        <column name="value" type="String"/>
+        <column name="created_at" type="DateTime"/>
+        <column name="updated_at" type="DateTime"/>
+      </table>
+
+      <table name="APIKey">
+        <column name="id" type="UUID" primary_key="true"/>
+        <column name="name" type="String"/>
+        <column name="key_hash" type="String"/>
+        <column name="user_id" type="UUID" foreign_key="User.id"/>
+        <column name="is_active" type="Boolean" default="true"/>
+        <column name="created_at" type="DateTime"/>
+        <column name="last_used_at" type="DateTime" nullable="true"/>
+      </table>
+    </schema>
+  </database_schema>
+
+  <api_endpoints_summary>
+    <auth>
+      <endpoint method="POST" path="/api/auth/register" description="Register new user"/>
+      <endpoint method="POST" path="/api/auth/login" description="Login with credentials"/>
+      <endpoint method="POST" path="/api/auth/logout" description="Logout current session"/>
+      <endpoint method="GET" path="/api/auth/me" description="Get current user"/>
+    </auth>
+
+    <users>
+      <endpoint method="GET" path="/api/users" description="List all users (admin)"/>
+      <endpoint method="GET" path="/api/users/:id" description="Get user details"/>
+      <endpoint method="PUT" path="/api/users/:id" description="Update user profile"/>
+      <endpoint method="DELETE" path="/api/users/:id" description="Delete user (admin)"/>
+    </users>
+
+    <agents>
+      <endpoint method="GET" path="/api/agents" description="List user's agents"/>
+      <endpoint method="GET" path="/api/agents/:id" description="Get agent details"/>
+      <endpoint method="POST" path="/api/agents" description="Create new agent"/>
+      <endpoint method="PUT" path="/api/agents/:id" description="Update agent"/>
+      <endpoint method="DELETE" path="/api/agents/:id" description="Delete agent"/>
+      <endpoint method="GET" path="/api/agents/:id/executions" description="List agent executions"/>
+    </agents>
+
+    <executions>
+      <endpoint method="GET" path="/api/executions" description="List executions"/>
+      <endpoint method="GET" path="/api/executions/:id" description="Get execution details"/>
+      <endpoint method="POST" path="/api/executions" description="Create execution"/>
+      <endpoint method="DELETE" path="/api/executions/:id" description="Cancel execution"/>
+    </executions>
+
+    <configs>
+      <endpoint method="GET" path="/api/agents/:id/configs" description="List configs"/>
+      <endpoint method="POST" path="/api/agents/:id/configs" description="Add config"/>
+      <endpoint method="PUT" path="/api/agents/:id/configs/:configId" description="Update config"/>
+      <endpoint method="DELETE" path="/api/agents/:id/configs/:configId" description="Delete config"/>
+    </configs>
+
+    <api_keys>
+      <endpoint method="GET" path="/api/keys" description="List API keys"/>
+      <endpoint method="POST" path="/api/keys" description="Generate API key"/>
+      <endpoint method="DELETE" path="/api/keys/:id" description="Revoke API key"/>
+    </api_keys>
+  </api_endpoints_summary>
+
+  <implementation_steps>
+    <step>Initialize Next.js 14 project with TypeScript and App Router</step>
+    <step>Configure Tailwind CSS for styling</step>
+    <step>Set up PostgreSQL database connection</step>
+    <step>Configure Prisma ORM with schema</step>
+    <step>Create development environment setup (init.sh)</step>
+    <step>Initialize Git repository with initial commit</step>
+    <step>Define complete Prisma schema with all models</step>
+    <step>Create and run initial database migration</step>
+    <step>Set up database seed script for test data</step>
+    <step>Create database utility functions</step>
+    <step>Implement password hashing utilities with bcrypt</step>
+    <step>Create user registration API endpoint</step>
+    <step>Create user login API endpoint</step>
+    <step>Implement session management</step>
+    <step>Create authentication middleware for protected routes</step>
+    <step>Implement logout functionality</step>
+    <step>Create current user API endpoint</step>
+    <step>Add role-based access control helpers</step>
+    <step>Create user management API endpoints</step>
+    <step>Create agent management API endpoints</step>
+    <step>Create agent configuration API endpoints</step>
+    <step>Create agent execution API endpoints</step>
+    <step>Create API key management API endpoints</step>
+    <step>Create root layout with responsive design</step>
+    <step>Build navigation components</step>
+    <step>Create authentication pages</step>
+    <step>Create dashboard page</step>
+    <step>Create agent management pages</step>
+    <step>Create execution management pages</step>
+    <step>Create API key management pages</step>
+    <step>Build reusable UI components</step>
+    <step>Implement error handling and validation</step>
+    <step>Add responsive design fixes</step>
+    <step>Add accessibility features</step>
+    <step>Write tests and verify all functionality</step>
+    <step>Final polish and documentation</step>
+  </implementation_steps>
+
+  <success_criteria>
+    <functionality>All 201 features implemented and verified end-to-end</functionality>
+    <data_integrity>All data stored in PostgreSQL with proper persistence</data_integrity>
+    <technical_quality>Modern Next.js patterns, TypeScript, clean code, proper error handling</technical_quality>
+    <security>Proper authentication, authorization, and data isolation between users</security>
+    <performance>Fast page loads and smooth user experience</performance>
+    <accessibility>WCAG AA compliant with keyboard navigation and screen reader support</accessibility>
+  </success_criteria>
+</project_specification>
